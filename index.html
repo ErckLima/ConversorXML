@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processador de XML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Processador de XML</h2>
+
+        <div class="input-group">
+            <label for="xmlImportacao">XML de Importação:</label>
+            <input type="file" id="xmlImportacao" accept=".xml">
+        </div>
+
+        <div class="input-group">
+            <label for="xmlNfInterna">XML NF Interna:</label>
+            <input type="file" id="xmlNfInterna" accept=".xml">
+        </div>
+
+        <div class="input-group">
+            <label for="xmlSaida">Salvar novo XML em:</label>
+            <input type="text" id="xmlSaida" placeholder="Nome do arquivo de saída">
+        </div>
+
+        <button id="processarBtn">Processar</button>
+
+        <div id="mensagem"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
