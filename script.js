@@ -29,6 +29,9 @@ function processarArquivos() {
                 substituirDest(xmlDocImportacao, xmlDocNfInterna);
                 modificarCFOP(xmlDocImportacao);
 
+                // Remove os namespaces indesejados
+                removeNamespaces(xmlDocImportacao.documentElement);
+
                 // Gerar o arquivo de saída
                 const serializer = new XMLSerializer();
                 const xmlString = serializer.serializeToString(xmlDocImportacao);
@@ -70,6 +73,18 @@ function modificarCFOP(xmlDoc) {
             cfop.textContent = '7' + cfop.textContent.substring(1);
         }
     });
+}
+
+// Função para remover namespaces de todo o documento XML
+function removeNamespaces(element) {
+    if (element.hasAttribute('xmlns')) {
+        element.removeAttribute('xmlns');
+    }
+    
+    // Recursivamente remove os namespaces de todos os elementos filhos
+    for (let i = 0; i < element.children.length; i++) {
+        removeNamespaces(element.children[i]);
+    }
 }
 
 function baixarArquivo(nomeArquivo, conteudo) {
